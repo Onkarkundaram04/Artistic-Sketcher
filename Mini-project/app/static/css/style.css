@@ -1,0 +1,262 @@
+:root {
+  --primary-color: #4a6fa5;
+  --secondary-color: #6b8cae;
+  --accent-color: #ff7e5f;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+  --gray-color: #6c757d;
+  --success-color: #28a745;
+  --border-radius: 8px;
+  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: #f5f7fa;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.logo span {
+  color: var(--accent-color);
+}
+
+.tagline {
+  font-size: 1.1rem;
+  color: var(--gray-color);
+}
+
+.main-content {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.upload-section {
+  margin-bottom: 2rem;
+}
+
+.file-upload-wrapper {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.file-upload {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-upload-label {
+  display: block;
+  padding: 2rem;
+  border: 2px dashed var(--secondary-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  transition: var(--transition);
+}
+
+.file-upload-label:hover {
+  border-color: var(--primary-color);
+  background-color: rgba(74, 111, 165, 0.05);
+}
+
+.file-upload-label i {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.file-upload-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.file-upload-hint {
+  font-size: 0.9rem;
+  color: var(--gray-color);
+}
+
+.style-options {
+  margin-bottom: 1.5rem;
+}
+
+.style-options h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  color: var(--dark-color);
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+}
+
+.radio-group input[type="radio"] {
+  display: none;
+}
+
+.radio-group label {
+  display: block;
+  padding: 0.8rem 1rem;
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  text-align: center;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid #dee2e6;
+}
+
+.radio-group label:hover {
+  background-color: #e9ecef;
+}
+
+.radio-group input[type="radio"]:checked + label {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+}
+
+.btn:hover {
+  background-color: #3a5a8a;
+  transform: translateY(-2px);
+}
+
+.btn i {
+  margin-right: 0.5rem;
+}
+
+.convert-btn {
+  width: 100%;
+  font-size: 1.1rem;
+  padding: 1rem;
+}
+
+.results-section {
+  margin-top: 2rem;
+}
+
+.single-result, .all-results {
+  margin-bottom: 2rem;
+}
+
+.single-result h3, .all-results h3 {
+  margin-bottom: 1.5rem;
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  text-align: center;
+}
+
+.image-container {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.download-btn {
+  background-color: var(--success-color);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.download-btn:hover {
+  background-color: #218838;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.gallery-item {
+  background-color: var(--light-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: center;
+}
+
+.gallery-item h4 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.gallery-item img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem 0;
+  color: var(--gray-color);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .radio-group {
+      grid-template-columns: 1fr 1fr;
+  }
+  
+  .gallery {
+      grid-template-columns: 1fr;
+  }
+}

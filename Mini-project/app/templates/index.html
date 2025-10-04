@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistic Sketch Converter | Transform Photos into Art</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1 class="logo">Artistic<span>Sketch</span></h1>
+            <p class="tagline">Transform your photos into beautiful sketches</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <form id="uploadForm" method="POST" enctype="multipart/form-data">
+                    <div class="file-upload-wrapper">
+                        <input type="file" id="image" name="image" accept="image/*" class="file-upload">
+                        <label for="image" class="file-upload-label">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span class="file-upload-text">Choose an image</span>
+                            <span class="file-upload-hint">PNG, JPG, JPEG (Max 5MB)</span>
+                        </label>
+                    </div>
+
+                    <div class="style-options">
+                        <h3>Select Sketch Style:</h3>
+                        <div class="radio-group">
+                            <input type="radio" id="style1" name="style" value="1" {% if selected_style == "1" %}checked{% endif %}>
+                            <label for="style1">Colored Pencil</label>
+
+                            <input type="radio" id="style2" name="style" value="2" {% if selected_style == "2" %}checked{% endif %}>
+                            <label for="style2">Cartoon</label>
+
+                            <input type="radio" id="style3" name="style" value="3" {% if selected_style == "3" %}checked{% endif %}>
+                            <label for="style3">Impressionist</label>
+
+                            <input type="radio" id="style4" name="style" value="4" {% if selected_style == "4" %}checked{% endif %}>
+                            <label for="style4">Pencil Sketch</label>
+
+                            <input type="radio" id="style5" name="style" value="5" {% if selected_style == "5" %}checked{% endif %}>
+                            <label for="style5">All Styles</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn convert-btn">
+                        <i class="fas fa-magic"></i> Convert Image
+                    </button>
+                </form>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                {% if processed_image %}
+                <div class="single-result">
+                    <h3>Your Sketch Result</h3>
+                    <div class="image-container">
+                        <img src="data:image/png;base64,{{ processed_image }}" alt="Sketch Result" id="resultImage">
+                    </div>
+                    <button class="btn download-btn" onclick="downloadImage('data:image/png;base64,{{ processed_image }}', 'sketch_result.png')">
+                        <i class="fas fa-download"></i> Download Sketch
+                    </button>
+                </div>
+                {% endif %}
+
+                {% if all_sketches %}
+                <div class="all-results">
+                    <h3>All Sketch Styles</h3>
+                    <div class="gallery">
+                        <div class="gallery-item">
+                            <h4>Colored Pencil</h4>
+                            <img src="data:image/png;base64,{{ all_sketches.pencil }}" alt="Colored Pencil Sketch">
+                            <button class="btn download-btn" onclick="downloadImage('data:image/png;base64,{{ all_sketches.pencil }}', 'colored_pencil.png')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        <div class="gallery-item">
+                            <h4>Cartoon</h4>
+                            <img src="data:image/png;base64,{{ all_sketches.cartoon }}" alt="Cartoon Sketch">
+                            <button class="btn download-btn" onclick="downloadImage('data:image/png;base64,{{ all_sketches.cartoon }}', 'cartoon.png')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        <div class="gallery-item">
+                            <h4>Impressionist</h4>
+                            <img src="data:image/png;base64,{{ all_sketches.impressionist }}" alt="Impressionist Sketch">
+                            <button class="btn download-btn" onclick="downloadImage('data:image/png;base64,{{ all_sketches.impressionist }}', 'impressionist.png')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                        <div class="gallery-item">
+                            <h4>Pencil Sketch</h4>
+                            <img src="data:image/png;base64,{{ all_sketches.pencil_sketch }}" alt="Pencil Sketch">
+                            <button class="btn download-btn" onclick="downloadImage('data:image/png;base64,{{ all_sketches.pencil_sketch }}', 'pencil_sketch.png')">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Image and Video processing Mini-Project</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
